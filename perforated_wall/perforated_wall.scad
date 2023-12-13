@@ -1,3 +1,4 @@
+include <../assets/hanger.scad>
 include <../assets/wall.scad>
 
 $fn = 100;
