@@ -30,3 +30,13 @@ module hanger_polygon(height, thickness) {
     ]);
 }
 
+/** \module hanger_hole
+ * This module draw hole for mount the hanger on wall. It require width and
+ * height, and it must be same as in hanger, because when it is not the same, 
+ * hanger would not suite to the hole.
+ * @param width Width of the hole
+ * @param height Height of the hole
+ */
+module hanger_hole(width, height) {
+    square([width, height]);
+}
