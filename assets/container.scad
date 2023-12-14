@@ -54,14 +54,14 @@ module hanging_container(
     
 
     container_outside_width = container_width + container_wall_thickness * 2;
-    container_width_fix_hanger = container_outside_width - (hole_width - 0.5);
-    start_position = container_width_fix_hanger % holes_spacing / 2;
     
-    for (count = [start_position : holes_spacing : container_outside_width]) {
-        rotate([90, 0, 90]) translate([0 - wall_thickness * 3, 0, count]) {
-            hanger_solid(hole_width, hole_height, wall_thickness);
-        }
-    }
+    hanging_for_modules(
+        container_outside_width,
+        hole_width,
+        hole_height,
+        holes_spacing,
+        wall_thickness
+    );
 }
 
 

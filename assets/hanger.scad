@@ -30,6 +30,32 @@ module hanger_polygon(height, thickness) {
     ]);
 }
 
+/** \module hanging_for_modules
+ * This draw hanging part of the modules, like containers. It draw hangers on
+ * all width of the module.
+ * @param width Width of the module
+ * @param hole_width Width of the hole in perforated wall
+ * @param hole_height Height of the hole in perforated wall
+ * @param holes_spacing Space between the holes
+ * @param wall_thickness Thickness of the wall
+ */
+module hanging_for_modules(
+    width, 
+    hole_width, 
+    hole_height, 
+    holes_spacing, 
+    wall_thickness
+) {
+    width_contain_holes = width - (hole_width - 0.5);
+    start_position = width_contain_holes % holes_spacing / 2;
+
+    for (count = [start_position: holes_spacing : width_contain_holes]) {
+        rotate([90, 0, 90]) translate([0 - wall_thickness * 3, 0, count]) {
+            hanger_solid(hole_width, hole_height, wall_thickness);
+        }
+    }
+}
+
 /** \module hanger_hole
  * This module draw hole for mount the hanger on wall. It require width and
  * height, and it must be same as in hanger, because when it is not the same, 
